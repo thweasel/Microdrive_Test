@@ -1,0 +1,11 @@
+{
+    "files.associations": {
+        "font.h": "c",
+        "input.h": "c",
+        "rs232.h": "c",
+        "conio.h": "c",
+        "spectrum.h": "c",
+        "malloc.h": "c",
+        "zxinterface1.h": "c"
+    }
+}
