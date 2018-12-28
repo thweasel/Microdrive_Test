@@ -25,6 +25,7 @@ main()
         {
                 result = if1_load_sector(drvN,i,MD);
                 //result = if1_load_record(drvN,"file.bas",0,MD);
+		printf("\nMD= %d",&MD);
                 printf("\nresult (sector) = %u",result);
                 if (result!=-1);
                 {       
