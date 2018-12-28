@@ -9,11 +9,11 @@
 static struct M_CHAN MD;
 static struct M_MAP MD_MAP;
 static struct M_CHAN *pMD;
-static u8_t *p;
+static u8_t *p=NULL;
 static  int result;
 static  int i;
 u8_t byte;
-main()
+void main(void)
 {
         int drvN = 1;
         pMD=&MD;
@@ -32,7 +32,7 @@ main()
 		printf("\nMD= %u",&MD);
 		printf("\npMD= %u",pMD);
                 printf("\nresult (sector) = %u",result);
-                if (result!=-1);
+                if (result!=-1)
                 {       
                         printf("\nDrive: %u ",MD->drive);
                         printf("\nsector: %u ",MD->sector);
