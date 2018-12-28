@@ -11,6 +11,7 @@ static struct M_MAP MD_MAP;
 static struct M_CHAN *pMD;
 static u8_t *p;
 static  int result;
+static  int i;
 u8_t byte;
 main()
 {
@@ -21,11 +22,15 @@ main()
         printf("Microdrive status = %d \n",if1_mdv_status(drvN));
         printf("Free sectors = %d \n",if1_free_sectors(drvN));
 
-        for(int i=70;i<76;i++)
+        //for(i=70;i<100;i++)
+	i = 70;
+	do
         {
-                result = if1_load_sector(drvN,i,MD);
+                result = if1_load_sector(drvN,i,pMD);
                 //result = if1_load_record(drvN,"file.bas",0,MD);
-		printf("\nMD= %d",&MD);
+	        pMD=&MD;
+		printf("\nMD= %u",&MD);
+		printf("\npMD= %u",pMD);
                 printf("\nresult (sector) = %u",result);
                 if (result!=-1);
                 {       
@@ -61,6 +66,6 @@ main()
                 printf("\nEND\n\n");
                 //in_Wait(10);
                 //clg();
-        }
+        }while (++i<100);
         
 }
