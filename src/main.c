@@ -10,9 +10,12 @@ static struct M_CHAN MD;
 static struct M_MAP MD_MAP;
 static struct M_CHAN *pMD;
 static u8_t *p=NULL;
-static  int result;
-static  int i;
+static int result;
+static int i=0;
+static int j=0;
 u8_t byte;
+
+
 void main(void)
 {
         int drvN = 1;
@@ -46,18 +49,18 @@ void main(void)
                         printf("\nhdpreamble: %u",MD->hdpreamble[0]);
 
                         printf("\nDATA\n");
-                        for (int i=0;i<100;i++)
+                        for (j=0;j<100;j++)
                         {
-                                //printf("%u:",MD.data[i]);
-                                byte=MD->data[i];
+                                //printf("%u:",MD.data[j]);
+                                byte=MD->data[j];
                                 printf("%X:",byte);
                         }
                         
                         printf("\nMAP:\n");
-                        for (int i=0;i<32;i++)
+                        for (j=0;j<32;j++)
                         {
-                                //printf("%d:",MD_MAP.map[i]);
-                                byte=MD_MAP->map[i];
+                                //printf("%d:",MD_MAP.map[j]);
+                                byte=MD_MAP->map[j];
                                 printf("%X:",byte);
 
                         }
