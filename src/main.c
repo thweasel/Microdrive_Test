@@ -18,7 +18,7 @@ u8_t byte;
 
 void main(void)
 {
-        int drvN = 1;
+        int drvN = 0;
         pMD=&MD;
         clg();
         if1_update_map(2,MD_MAP);
