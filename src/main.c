@@ -18,10 +18,10 @@ u8_t byte;
 
 void main(void)
 {
-        int drvN = 0;
+        int drvN = 1;
         pMD=&MD;
         clg();
-        if1_update_map(2,MD_MAP);
+        if1_update_map(1,MD_MAP);
         printf("Microdrive status = %d \n",if1_mdv_status(drvN));
         printf("Free sectors = %d \n",if1_free_sectors(drvN));
 
