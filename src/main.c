@@ -26,29 +26,38 @@ void main(void)
         printf("Free sectors = %d \n",if1_free_sectors(drvN));
 
         //for(i=70;i<100;i++)
-	i = 70;
+	i = 1;
 	do
         {
                 result = if1_load_sector(drvN,i,pMD);
                 //result = if1_load_record(drvN,"file.bas",0,MD);
-	        pMD=&MD;
-		printf("\nMD= %u",&MD);
-		printf("\npMD= %u",pMD);
-                printf("\nresult (sector) = %u",result);
-                if (result!=-1)
+	        //pMD=&MD;
+		
+                //printf("\nMD= %u",&MD);  //pointer - original address
+		//printf("\npMD= %u",pMD); //pointer - updated on each run to check address isnt moving (memory leak)
+
+                //printf("\nresult (sector) = %u",result);  // result will show the number for the returned sector (should match the requested)
+                
+                
+                if (result!=-1)  //show all sectors scanned
+                //if(MD->recflg!=0)  //show recflg sectors (used?)
                 {       
-                        printf("\nDrive: %u ",MD->drive);
+                //        printf("\nDrive: %u ",MD->drive);
                         printf("\nsector: %u ",MD->sector);
-                        printf("\nhdname: %s ",if1_getname(MD->hdname));
-                        printf("\nname:  %s ",if1_getname(MD->name));
-                        printf("\nrecname:  %s ",if1_getname(MD->recname));
+                //        printf("unused: %d ",MD->unused);  // does nothing scanning sectors
+                //        printf("\nhdname: %s ",if1_getname(MD->hdname));
+                //        printf("\nname:  %s ",if1_getname(MD->name));
+                        printf("recname: %s ",if1_getname(MD->recname));
+                //        printf("record: %d ",if1_getname(MD->record));  // does nothing scanning sectors
                                                
                         
-                        printf("\nbc: %u ",MD->bytecount);
-                        printf("\nrecnum: %u reclen: %u recflg: %u",MD->recnum,MD->reclen,MD->recflg);
-                        printf("\nhdpreamble: %u",MD->hdpreamble[0]);
+                //        printf("\nbytecount: %u ",MD->bytecount);  // does nothing scanning sectors
+                        printf("recnum: %u reclen: %u recflg: %u",MD->recnum,MD->reclen,MD->recflg);
+                //        printf("\nhdpreamble: %u",MD->hdpreamble[0]);
 
-                        printf("\nDATA\n");
+
+                //uncomment below to print out the data and the map on the tape
+                /*        printf("\nDATA\n");
                         for (j=0;j<100;j++)
                         {
                                 //printf("%u:",MD.data[j]);
@@ -64,11 +73,13 @@ void main(void)
                                 printf("%X:",byte);
 
                         }
+                */
                 }
                 
-                printf("\nEND\n\n");
-                //in_Wait(10);
+                
+                
                 //clg();
-        }while (++i<100);
-        
-}
+        }while (++i<255);
+        printf("\nEND\n\n");
+        in_Wait(5000);
+        }
