@@ -1,3 +1,3 @@
 # Microdrive_test
 
-This is a test project for Microdrive programming in C
+This is a test project for ZX Spectrum Microdrive, using z88dk libraries.
